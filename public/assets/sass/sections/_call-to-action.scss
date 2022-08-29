@@ -1,0 +1,101 @@
+/* Call To Action */
+.call-to-action {
+    margin-bottom: -100px;
+    .call-to-action-bg {
+        background-color: $portfolio-bg;
+        background-image: url('../images/call-to-action-bg.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 60px;
+        position: relative;
+        z-index: 0;
+        @include landscape-phone {
+            padding: 40px;
+        }
+        @include portrait-phone {
+            padding: 40px;
+        }
+        .call-to-action-shape {
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: auto;
+                height: auto;
+                z-index: -1;
+            }
+        }
+        .call-to-action-content {
+            display: flex;
+            align-items: center;
+            @include tablet {
+                display: inherit;
+            }
+            @include landscape-phone {
+                display: inherit;
+            }
+            @include portrait-phone {
+                display: inherit;
+            }
+            .call-to-action-title {
+                width: 60%;
+                @include desktop {
+                    width: 80%;
+                }
+                @include tablet {
+                    width: 100%;
+                }
+                @include landscape-phone {
+                    width: 100%;
+                }
+                @include portrait-phone {
+                    width: 100%;
+                }
+                h2.title {
+                    span {
+                        color: $primary-color;
+                    }
+                }
+                h6.title {
+                    a {
+                        color: $primary-color;
+                    }
+                }
+            }
+            .call-to-action-btn {
+                text-align: right;
+                @include tablet {
+                    text-align: left;
+                    margin-top: 40px;
+                }
+                @include landscape-phone {
+                    text-align: left;
+                    margin-top: 40px;
+                }
+                @include portrait-phone {
+                    text-align: left;
+                    margin-top: 40px;
+                }
+                width : 40%;
+                @include desktop {
+                    width: 20%;
+                }
+                @include tablet {
+                    width: 100%;
+                }
+                @include landscape-phone {
+                    width: 100%;
+                }
+                @include portrait-phone {
+                    width: 100%;
+                }
+                .template-btn.action-btn {
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+/* Form */
+.contact-form {
+    form {
+        input,
+        textarea {
+            padding: 15px 30px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 2px solid $border-color;
+            border-radius: 5px;
+            option {
+                text-transform: capitalize;
+            }
+        }
+        input[type=text],
+        input[type=email] {
+            &:focus {
+                border: 2px solid $border-color;
+            }
+        }
+        textarea {
+            height: 150px;
+        }
+        ::placeholder {
+            text-transform: capitalize;
+        } 
+        button.template-btn {
+            border: 1px solid transparent;
+            width: 100%;
+            &:hover {
+                color: $secondary-color;
+                border: 1px solid $secondary-color;
+            }
+        }
+    }
+}
+
+.widget-form {
+    .request-quote-form {
+        background-color: var(--main-color-one);
+        padding: 40px;
+        h4.title {
+            color: var(--white-color);
+            font-weight: 700;
+        }
+        form {
+            margin-top: 20px;
+            input,
+            textarea {
+                font-size: 14px;
+                color: $heading-color;
+                padding: 10px 15px;
+                background-color: $border-color;
+                width: 100%;
+                margin-bottom: 10px;
+                border: 1px solid transparent;
+                &:focus {
+                    border: 1px solid transparent;
+                }
+            }
+            button {
+                padding: 12px;
+                color: $white-color;
+                background-color: $secondary-color;
+                font-family: var(--heading-font);
+                font-size: 14px;
+                font-weight: 500;
+                text-transform: capitalize;
+                text-align: center;
+                transition: $transition;
+                border: 1px solid transparent;
+                width: 100%;
+                &:hover {
+                    background-color: transparent;
+                    border: 1px solid $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+.blog-comments-form {
+    form {
+        input,
+        textarea {
+            padding: 15px 30px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+        textarea {
+            height: 150px;
+        }
+        button {
+            border: 1px solid transparent;
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}

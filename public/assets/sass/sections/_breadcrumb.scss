@@ -1,0 +1,16 @@
+/* Breadcrumb */
+.breadcrumb-area {
+    background-color: $primary-color;
+    background-image: url('../images/client-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 200px 0 115px;
+    h2.title,
+    a,
+    span {
+        color: $white-color;
+        text-transform: capitalize;
+    }
+}

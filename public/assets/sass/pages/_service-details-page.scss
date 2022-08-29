@@ -1,0 +1,57 @@
+/* Service Details Page */
+.service-details-area {
+    .service-content {
+        margin-top: 40px;
+        ul {
+            margin-top: 20px;
+            li {
+                +li {
+                    margin-top: 10px; 
+                }
+                i {
+                    color: $blue-four;
+                    margin-right: 10px;
+                    font-size: 14px;
+                }           
+            }
+        }
+    }
+    .service-widget-area {
+        @include tablet {
+            margin-top: 40px;
+        }
+        @include landscape-phone {
+            margin-top: 40px;
+        }
+        @include portrait-phone {
+            margin-top: 40px;
+        }
+    }
+    .service-widget {
+        align-items: center;
+        padding: 20px 30px;
+        border: 1px solid $border-color;
+        background-color: $border-color;
+        transition: $transition;
+        display: block;
+        text-transform: capitalize;
+        font-weight: 700;
+        margin-bottom: 20px;
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: $blue-four;
+        }
+        &:hover {
+            background-color: $white-color;
+        }
+    }
+    .service-widget:last-child {
+        border-bottom:  1px solid $border-color;
+    }
+}

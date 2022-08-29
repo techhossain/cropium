@@ -1,0 +1,187 @@
+/* Social Link */
+.social-link {
+    position: relative;
+    .award-shape {
+        img {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: auto;
+            height: auto;
+        }
+    }  
+    .social-single-item {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px;
+        box-shadow: 0 20px 50px rgba(black, .07);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        transition: all .2s ease-in;
+        &:hover {
+            margin-top: -5px;
+        }
+        .social-number {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 42px;
+            font-weight: 700;
+            color: $purple-two;
+            line-height: 1.15;
+        }
+        .social-single-icon {
+            margin-right: 20px;
+            i {
+                font-size: 30px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 10px;
+                text-align: center;
+            }
+        }
+        .social-single-content {
+            span {
+                text-transform: capitalize;
+            }
+        }
+    }
+    .social-single-item.social-item-1 {
+        .social-single-icon{
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+    }
+    .social-single-item.social-item-2 {
+        .social-single-icon{
+            i {
+                color: $secondary-color;
+                background-color: $red-two;
+            }
+        }
+    }
+    .social-single-item.social-item-3 {
+        .social-single-icon{
+            i {
+                color: $paste-color;
+                background-color: $paste-two;
+            }
+        }
+    }
+    .social-single-item.social-item-4 {
+        .social-single-icon{
+            i {
+                color: $paste-color;
+                background-color: $paste-two;
+            }
+        }
+    }
+    .social-single-item.social-item-5 {
+        .social-single-icon{
+            i {
+                color: $yellow-color;
+                background-color: $yellow-two;
+            }
+        }
+    }
+    .social-single-item.social-item-6 {
+        .social-single-icon{
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+    }
+}
+
+// Social Link Home 02
+.social-link-home-2 {
+    background-color: $primary-color-home-2;
+    .social-single-slide {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px;
+        position: relative;
+        overflow: hidden;
+        transition: $transition;
+        background-color: $secondary-color-home-2;
+        &:hover {
+            background-color: $secondary-color;
+        }
+        .social-number {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 42px;
+            font-weight: 700;
+            color: $purple-two;
+            line-height: 1.15;
+        }
+        .social-single-icon {
+            margin-right: 20px;
+            i {
+                font-size: 30px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 10px;
+                text-align: center;
+            }
+        }
+        .social-single-content {
+            span {
+                text-transform: capitalize;
+            }
+        }
+    }
+    .social-single-slide.social-item-1 {
+        .social-single-icon{
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+    }
+    .social-single-slide.social-item-2 {
+        .social-single-icon{
+            i {
+                color: $secondary-color;
+                background-color: $red-two;
+            }
+        }
+    }
+    .social-single-slide.social-item-3 {
+        .social-single-icon{
+            i {
+                color: $paste-color;
+                background-color: $paste-two;
+            }
+        }
+    }
+    .social-single-slide.social-item-4 {
+        .social-single-icon{
+            i {
+                color: $green-color;
+                background-color: $green-two;
+            }
+        }
+    }
+    .social-single-slide.social-item-5 {
+        .social-single-icon{
+            i {
+                color: $yellow-color;
+                background-color: $yellow-two;
+            }
+        }
+    }
+
+    .social-link-slider {
+        .slick-slide {
+            margin: 0 10px;
+        }
+    }
+}

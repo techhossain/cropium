@@ -1,0 +1,81 @@
+/* CounterUp */
+.single-counterup {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    .single-counterup-icon {
+        margin-right: 20px;
+        i {
+            font-size: 30px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+    }
+    .single-counterup-content {
+        span {
+            color: $h4-color;
+            text-transform: capitalize;
+        }
+        .counter-number {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+.single-counterup.single-counterup-1 {
+    .single-counterup-icon{
+        i {
+            color: $blue-four;
+            background-color: $purple-two;
+        }
+    }
+    .single-counterup-content {
+        h3.title {
+            color: $blue-four;
+        }
+    }
+}
+.single-counterup.single-counterup-2 {
+    .single-counterup-icon{
+        i {
+            color: $secondary-color;
+            background-color: $red-two;
+        }
+    }
+    .single-counterup-content {
+        h3.title {
+            color: $secondary-color;
+        }
+    }
+}
+.single-counterup.single-counterup-3 {
+    .single-counterup-icon{
+        i {
+            color: $yellow-color;
+            background-color: $yellow-two;
+        }
+    }
+    .single-counterup-content {
+        h3.title {
+            color: $yellow-color;
+        }
+    }
+}
+.single-counterup.single-counterup-4 {
+    .single-counterup-icon{
+        i {
+            color: $paste-color;
+            background-color: $paste-two;
+        }
+    }
+    .single-counterup-content {
+        h3.title {
+            color: $paste-color;
+        }
+    }
+}

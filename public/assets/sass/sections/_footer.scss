@@ -1,0 +1,127 @@
+/* Footer Area */
+.footer-area {
+    background-color: $primary-color;
+    background-image: url('../images/footer-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 180px;
+    .footer-top {
+        .footer-logo {
+            img {
+                width: auto;
+                height: auto;
+                @include landscape-phone {
+                    margin: 0 auto 30px;
+                }
+                @include portrait-phone {
+                    margin: 0 auto 30px;
+                }
+            }
+        }
+        .footer-menu {
+            ul {
+                float: right;
+                @include landscape-phone {
+                    float: none;
+                    text-align: center;
+                }
+                @include portrait-phone {
+                    float: none;
+                    text-align: center;
+                }
+                li {
+                    display: inline;
+                    a {
+                        color: $blue-three;
+                        text-transform: capitalize;
+                        font-weight: 500;
+                        transition: $transition;
+                        padding: 20px;
+                        display: inline-block;
+                        &:hover {
+                            color: $white-color;
+                        }
+                    }
+                }
+            };
+        }
+    }
+    .footer-copyright {
+        padding: 30px 0;
+        color: $blue-three;
+        text-align: center;
+    }
+}
+
+// Footer Area Home 02 
+.footer-area-home-2 {
+    background-color: $secondary-color-home-2;
+    .footer-widget-area {
+        .widget-title {
+            margin-bottom: 20px;
+        }
+        .footer-widget {
+            margin-bottom: 30px;
+            li {
+                margin-bottom: 10px;
+                a {
+                    color: $white-color;
+                    text-transform: capitalize;
+                    transition: all .2s ease-in;
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+
+        form {
+            position: relative;
+            margin-bottom: 15px;
+            width: 100%;
+            input {
+                color: $white-color;
+                background-color: $secondary-color;
+                width: 100%;
+                border: 1px solid transparent;
+                padding: 12px 60px 12px 20px;
+            }
+            button {
+                color: $white-color;
+                border: 1px solid transparent;
+                padding: 12px 24px;
+                border-radius: 5px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: transparent;
+                cursor: pointer;
+            }
+            ::placeholder {
+                color: $white-color;
+                opacity: 1; /* Firefox */
+              }
+              :-ms-input-placeholder { /* Internet Explorer 10-11 */
+               color: $white-color;
+              }
+              ::-ms-input-placeholder { /* Microsoft Edge */
+               color: $white-color;
+            }
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            img {
+                width: 200px;
+            }
+        }
+    }
+
+    .footer-copyright-home-2 {
+        background-color: $primary-color-home-2;
+        text-align: center;
+        color: $white-color;
+        padding: 20px 0;
+    }
+}

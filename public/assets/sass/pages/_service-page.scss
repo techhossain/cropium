@@ -1,0 +1,80 @@
+/* Service Page */
+.service-area {
+    .cropium-service-item {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+        transition: $transition;
+        margin-bottom: 30px;
+        &:hover {
+            margin-top: -5px;
+        }
+        .service-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            i {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 30px;
+                border-radius: 10px;
+                text-align: center;
+            }
+        }
+        .service-icon.service-icon-1 {
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+        .service-icon.service-icon-2 {
+            i {
+                color: $yellow-color;
+                background-color: $yellow-two;
+            }
+        }
+        .service-icon.service-icon-3 {
+            i {
+                color: $secondary-color;
+                background-color: $red-two;
+            }
+        }
+        .service-icon.service-icon-4 {
+            i {
+                color: $paste-color;
+                background-color: $paste-two;
+            }
+        }
+        .service-icon.service-icon-5 {
+            i {
+                color: $green-color;
+                background-color: $green-two;
+            }
+        }
+        .service-icon.service-icon-6 {
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+
+        .service-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-content {
+            padding: 30px;
+            p {
+                margin: 15px 0;
+            }
+            a {
+                color: $h4-color;
+                font-weight: 700;
+                text-transform: capitalize;
+                transition: all .2s ease-in;
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}

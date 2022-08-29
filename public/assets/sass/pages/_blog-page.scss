@@ -1,0 +1,241 @@
+/* Blog Page */
+.blog-area {
+    .cropium-blog-item {
+        margin-bottom: 60px;
+        .blog-image {
+            height: 350px;
+            @include landscape-phone {
+                height: 280px;
+            }
+            @include portrait-phone {
+                height: 250px;
+            }
+        }
+    }
+
+    .cropium-blog-item {
+        border: 1px solid var(--border-color);
+        .blog-image {
+            position: relative;
+            overflow: hidden;
+            .blog-date {
+                padding: 15px 20px 10px;
+                background-color: var(--main-color-one);
+                text-align: center;
+                display: inline-block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                border-radius: 10px;
+                font-size: 14px;
+                h5.title {
+                    color: var(--white-color);
+                    font-weight: 700;
+                    line-height: 10px;
+                }
+                span {
+                    color: var(--white-color);
+                    text-transform: capitalize;
+                }
+            }
+            img {
+                height: 100%;
+                transition: $transition;
+            }
+        }
+        .blog-content {
+            padding: 30px;
+            .blog-meta {
+                text-transform: capitalize;
+                margin-bottom: 10px;
+                font-size: 14px;
+                i {
+                    margin-right: 5px;
+                    font-weight: 700;
+                }
+                li {
+                    display: inline-block;
+                    +li {
+                        margin-left: 20px;
+                    }
+                }
+            }
+            h3.title {
+                transition: $transition;
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+            p {
+                margin-top: 20px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// Blog Sidebar
+.widget-area {
+   .widget-style {
+       padding: 30px;
+       border: 1px solid var(--border-color);
+       margin-bottom: 30px;
+       .widget-title {
+           margin-bottom: 20px;
+       }
+   } 
+
+   .widget-search {
+       form {
+           width: 100%;
+           position: relative;
+           input {
+            font-size: 14px;
+            width: 100%;
+            height: 50px;
+            padding: 0 20px;
+            background-color: var(--white-soft-color);
+            border: 1px solid transparent;
+           }
+           button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            border: 1px solid transparent;
+            background-color: var(--white-soft-color);
+            color: $primary-color;
+            transition: $transition;
+            &:hover {
+                color: $secondary-color;
+            }
+           }
+       }
+   }
+
+   .widget-recent-post {
+       .single-post {
+           display: flex;
+           align-items: center;
+           +.single-post {
+               margin-top: 30px;
+           }
+           .single-post-image {
+               width: 80px;
+               margin-right: 20px;
+           }
+           .single-post-content {
+               a {
+                   color: $heading-color;
+                   font-family: var(--heading-font);
+                   transition: $transition;
+                   font-weight: 700;
+                   line-height: 18px;
+                   display: inline-block;
+                   text-transform: capitalize;
+                   &:hover {
+                       color: $secondary-color;
+                   }
+               }
+               span {
+                   text-transform: capitalize;
+                   display: block;
+                   font-size: 14px;
+               }
+           }
+       }
+   }
+
+   .widget-social-links {
+       ul {
+           li {
+               display: inline;
+               +li {
+                   margin-left: 10px;
+               }
+               a {
+                   font-size: 30px;
+                   transition: $transition;
+                   line-height: 0;
+                   &:hover {
+                       opacity: .7;
+                   }
+               }
+               .facebook-icon {
+                   color: $facebook;
+               }
+               .twitter-icon {
+                   color: $twitter;
+               }
+               .google-plus-icon {
+                   color: $google-plus;
+               }
+               .instagram-icon {
+                   color: $instagram;
+               }
+           }
+       }
+   }
+
+   .widget-categories {
+      li {
+          position: relative;
+          a {
+            font-size: 14px;
+            text-transform: capitalize;
+            font-family: var(--heading-font);
+            transition: $transition;
+            &:hover {
+                color: $secondary-color;
+            }
+          }
+          +li {
+              margin-top: 10px;
+          }
+          span {
+              position: absolute;
+              top: 0;
+              right: 0;
+          }
+      } 
+   }
+}
+
+// Cropium Blog Pagination
+.cropium-blog-pagination {
+    @include tablet {
+        margin-top: 40px;
+    }
+    @include landscape-phone {
+        margin-top: 40px;
+    }
+    @include portrait-phone {
+        margin-top: 40px;
+    }
+    ul {
+        li {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            line-height: 30px;
+            transition: $transition;
+            cursor: pointer;
+            +li {
+                margin-left: 10px;
+            }
+            &:hover {
+                color: #fff;
+                background-color: var(--main-color-one);
+                border: 1px solid transparent;
+            }
+        }
+        .active {
+            color: #fff;
+            background-color: var(--main-color-one);
+            border: 1px solid transparent;
+        }
+    }
+}

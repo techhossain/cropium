@@ -1,0 +1,84 @@
+/* Portfolio Page */
+.portfolio-items {
+    position: relative;
+    .portfolio-shape-1 {
+        img {
+            position: absolute;
+            top: 15%;
+            right: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    .portfolio-shape-2 {
+        img {
+            position: absolute;
+            bottom: 15%;
+            left: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    .single-portfolio-item {
+        margin-bottom: 60px;
+    }
+}
+.single-portfolio-item {
+    ul {
+        li {
+            text-transform: capitalize;
+        }
+    }
+    .portfolio-image {
+        @include tablet {
+            margin-bottom: 40px;
+        }
+        @include landscape-phone {
+            margin-bottom: 40px;
+        }
+        @include portrait-phone {
+            margin-bottom: 40px;
+        }
+        position: relative;
+        .hover-state {
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+            i {
+                color: $white-color;
+                font-size: 16px;
+                position: absolute;
+                top: 50%;
+                left: 20%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                width: 50px;
+                height: 50px;
+                background-color: $secondary-color;
+                border-radius: 50%;
+                line-height: 50px;
+                opacity: 0;
+                visibility: hidden;
+                transition: $transition-long;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+        &:hover {
+            .hover-state {
+                opacity: 1;
+                visibility: visible;
+                i {
+                    left: 50%;
+                    opacity: 1;
+                    visibility: visible; 
+                }
+            }
+        }
+    }
+    .portfolio-content {
+        .project-para {
+            margin: 20px 0;
+        }
+    }
+}

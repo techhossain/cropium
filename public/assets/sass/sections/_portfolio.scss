@@ -1,0 +1,177 @@
+/* Portfolio */
+.portfolio-area {
+    background-color: $portfolio-bg;
+    .section-title {
+        text-align: center;
+    }
+    .gallery-single-item {
+        margin-bottom: 30px;
+        .gallery-title {
+            h4.title {
+                color: $heading-color;
+            }
+        }
+        .box-03-image {
+            margin-bottom: 20px;
+        }
+    }
+    .item-box-style-03 {
+        border-radius: 0;
+        // .box-03-image {
+        //     height: 350px;
+        // }
+    }
+    .gallery-tab {
+        text-align: center;
+        margin-bottom: 40px;
+        ul {
+            li {
+                color: $heading-color;
+                background-color: transparent;
+                font-size: 16px;
+                font-family: $heading-font;
+                text-transform: capitalize;
+                display: inline-block;
+                padding: 8px 20px 8px 0;
+                font-weight: 500;
+                margin-right: 30px;
+                cursor: pointer;
+            }
+            .active {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    // Item Box Style 03
+    .item-box-style-03 {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        transition: $transition;
+        .box-03-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            @include desktop {
+                height: 220px;
+            }
+            @include tablet {
+                height: 220px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                transition: $transition;
+            }
+        }
+        .hover-state {
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+            i {
+                color: $white-color;
+                font-size: 16px;
+                position: absolute;
+                top: 45%;
+                left: 20%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                width: 50px;
+                height: 50px;
+                background-color: $secondary-color;
+                border-radius: 50%;
+                line-height: 50px;
+                opacity: 0;
+                visibility: hidden;
+                transition: $transition-long;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+        &:hover {
+            .hover-state {
+                opacity: 1;
+                visibility: visible;
+                i {
+                    left: 50%;
+                    opacity: 1;
+                    visibility: visible; 
+                }
+            }
+            .box-03-image {
+                img {
+                    transform: rotate(5deg) scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+// Portfolio Home 02
+.portfolio-area-home-2 {
+    background-color: $primary-color-home-2;
+    .single-portfolio-item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        &:hover {
+            .portfolio-hover-state {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .portfolio-image {
+            @include tablet {
+                margin-bottom: 0;
+            }
+            @include landscape-phone {
+                margin-bottom: 0;
+            }
+            @include portrait-phone {
+                margin-bottom: 0;
+            }
+        }
+        &.margin-plus {
+            margin-top: 30px;
+            @include tablet {
+                margin-top: 0;
+            }
+            @include landscape-phone {
+                margin-top: 0;
+            }
+            @include portrait-phone {
+                margin-top: 0;
+            }
+        }
+        &.margin-minus {
+            margin-top: -30px;
+            @include tablet {
+                margin-top: 0;
+            }
+            @include landscape-phone {
+                margin-top: 0;
+            }
+            @include portrait-phone {
+                margin-top: 0;
+            }
+        }
+        a {
+            text-transform: capitalize;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .portfolio-hover-state {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($secondary-color, .8);
+            padding: 100px 40px 40px;
+            opacity: 0;
+            transition: $transition;
+            transform: scale(.7)
+        }
+    }
+}

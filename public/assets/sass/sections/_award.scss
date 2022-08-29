@@ -1,0 +1,45 @@
+/* Award */
+.award-area {   
+    position: relative;
+    .award-shape {
+        img {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: auto;
+            height: auto;
+        }
+    }     
+    .section-title {
+        text-align: center;
+    }
+    .single-award {
+        padding: 30px 20px;
+        box-shadow: 0 20px 50px rgba(black, .07);
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all .2s ease-in;
+        &:hover {
+            margin-top: -5px;
+        }
+        img {
+            width: auto;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+        .award-number {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 42px;
+            font-weight: 700;
+            color: $purple-two;
+            line-height: 1.15;
+        }
+        span {
+            text-transform: capitalize;
+        }
+    }
+}

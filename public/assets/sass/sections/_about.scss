@@ -1,0 +1,144 @@
+/* About Section */
+.about-area {
+    background-image: url('../images/about-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .about-email {
+        margin-bottom: 40px;
+        color: $secondary-color;
+        i {
+            background-color: $red-two;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        a {
+            font-weight: 700;
+            text-decoration: underline;
+            margin-left: 15px;
+        }
+    }
+    .about-bottom {
+        display: flex;
+        align-items: center;
+        .about-experience {
+            margin-right: 50px;
+        }
+        .about-experience, 
+        .about-client {
+            display: flex;
+            align-items: center;
+        }
+        .experience-years {
+            color: $blue-four;
+            font-size: 48px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .all-clients {
+            color: $yellow-color;
+            font-size: 48px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .experience-text,
+        .client-text {
+            color: $black-color;
+            text-transform: capitalize;
+        }
+    }
+    .about-right {
+        @include tablet {
+            margin-top: 60px;
+        }
+        @include landscape-phone {
+            margin-top: 60px;
+        }
+        @include portrait-phone {
+            margin-top: 60px;
+        }
+        .template-btn.about-btn {
+            margin-top: 30px;
+        }
+    }
+}
+
+// About Area Home Page 02 
+.about-area-home-2 {
+    background-color: $primary-color-home-2;
+    overflow: hidden;
+    position: relative;
+    .yellow-shape {
+        position: absolute;
+        top: 30%;
+        right: 0;
+        width: auto;
+        height: auto;
+        @include landscape-phone {
+            display: none;
+        }
+        @include portrait-phone {
+            display: none;
+        }
+    }
+    .about-counterup-home-2 {
+        position: relative;
+        .single-counterup-home-2 {
+            overflow: hidden;
+            display: block;
+            width: 220px;
+            height: 220px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            text-align: center;
+            i {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            span {
+                text-transform: capitalize;
+            }
+        }
+        .single-counterup-home-2.counterup-greenbox {
+            background-color: rgba($green-color-home-2, .9);
+            position: absolute;
+            top: 0;
+            left: 180px;
+            z-index: 3;
+            @include portrait-phone {
+                left: 150px;
+            }
+        }
+        .single-counterup-home-2.counterup-redbox {
+            background-color: rgba($secondary-color, .9);
+            position: absolute;
+            top: 50px;
+            left: 0;
+            z-index: 2;
+        }
+        .single-counterup-home-2.counterup-yellowbox {
+            background-color: rgba($yellow-color, .9);
+            position: absolute;
+            top: 170px;
+            left: 150px;
+            z-index: 1;
+            @include portrait-phone {
+                left: 120px;
+            }
+        }
+    }
+
+    .about-content {
+        @include tablet {
+            margin-top: 450px;
+        }
+        @include landscape-phone {
+            margin-top: 450px;
+        }
+        @include portrait-phone {
+            margin-top: 450px;
+        }
+    }
+}

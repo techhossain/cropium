@@ -1,0 +1,125 @@
+/* Button */
+.template-btn {
+    color: var(--white-color);
+    background-color: var(--secondary-color);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--heading-font);
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 6px 0;
+    border: 1px solid transparent;
+    transition: $transition;
+    &:hover {
+        color: $white-color;
+        background-color: transparent;
+        border: 1px solid $secondary-color;
+    }
+}
+
+.template-btn.header-btn {
+    background-color: $blue-two;
+    margin-left: 60px;
+    padding: 12px 20px;
+    transition: all .2s ease-in;
+    @include tablet {
+        margin-left: 30px;
+    }
+    @include landscape-phone {
+        margin-left: 30px;
+    }
+    &:hover {
+        background-color: transparent;
+        border: 1px solid $blue-two;
+    }
+}
+
+.template-btn.about-btn {
+    background-color: $purple-color;
+    padding: 12px 24px;
+    &:hover {
+        color: $purple-color;
+        background-color: transparent;
+        border: 1px solid $purple-color;
+    }
+}
+
+.button-widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    color: $white-color;
+    background-color: $blue-four;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transition: $transition;
+    .button-icon {
+        color: $white-color;
+        font-size: 30px;
+        transition: $transition;
+    }
+    &:hover {
+        color: $white-color;
+        background-color: var(--secondary-color);
+        .button-icon {
+            color: $white-color;
+        }
+    }
+}
+
+.template-btn.btn-404 {
+    margin-top: 40px;
+    background-color: $blue-four;
+    &:hover {
+        border: 1px solid $blue-four;
+        background-color: transparent;
+        color: $blue-four;
+    }
+}
+
+.template-btn.portfolio-btn {
+    text-align: center;
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+// Home 02 Button 
+.home-page-2 {
+    .template-btn {
+        color: $white-color;
+        background-color: $secondary-color;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: $body-font;
+        text-transform: capitalize;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 0;
+        border: 1px solid transparent;
+        transition: $transition;
+        i {
+            margin-left: 4px;
+        }
+        &:hover {
+            color: $white-color;
+            background-color: transparent;
+            border: 1px solid $white-color;
+        }
+    }
+
+    .template-btn.header-btn {
+        margin-left: 60px;
+        padding: 12px 20px;
+        transition: all .2s ease-in;
+        @include tablet {
+            margin-left: 30px;
+        }
+        @include landscape-phone {
+            margin-left: 30px;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+/* Contact Page */ 
+.contact-area {
+    position: relative;
+    .contact-shape-1 {
+        img {
+            position: absolute;
+            top: 40%;
+            right: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    .contact-shape-2 {
+        img {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    .contact-left-content {
+        @include tablet {
+            margin-bottom: 60px;
+        }
+        @include landscape-phone {
+            margin-bottom: 60px;
+        }
+        @include portrait-phone {
+            margin-bottom: 60px;
+        }
+        .info-top {
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+            i {
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+            .info-envelope-icon {
+                i {
+                    color: $secondary-color;
+                    background-color: $red-two;
+                }
+            }
+            .info-address-icon {
+                i {
+                    color: $yellow-color;
+                    background-color: $yellow-two;
+                }
+            }
+            h4.title {
+                color: $heading-color;
+            }
+        }
+        .info-bottom {
+            margin-top: 10px;
+            .info-content {
+                span {
+                    display: block;
+                    color: $heading-color;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .top-span {
+        color: $heading-color;
+        font-weight: 700;
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        display: block;
+    }
+}
+.map-area {
+    margin-bottom: -187px;
+    @include tablet {
+        margin-bottom: -272px;
+    }
+    @include landscape-phone {
+        margin-bottom: -296px;
+    }
+    @include portrait-phone {
+        margin-bottom: -392px;
+    }
+}

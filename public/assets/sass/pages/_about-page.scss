@@ -1,0 +1,105 @@
+/* About Page */
+.about-page-top {
+    position: relative;
+    background-image: url('../images/about-page-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .section-title {
+        span {
+            color: $blue-four;
+        }
+    }
+    .about-page-content {
+        @include tablet {
+            margin-top: 60px;
+        }
+        @include landscape-phone {
+            margin-top: 60px;
+        }
+        @include portrait-phone {
+            margin-top: 60px;
+        }
+    }
+    .about-page-info {
+        position: relative;
+        background-color: $border-color;
+        padding: 30px 40px;
+        margin-top: 40px;
+        border-left: 5px solid $blue-four;
+        box-sizing: border-box;
+        img {
+            position: absolute;
+            top: 0;
+            right: 0
+        }
+        h3.title {
+            display: inline-block;
+            span {
+                color: $blue-four;
+            }
+        }
+    }
+}
+
+.team-member-area {
+    position: relative;
+    .team-member-shape {
+        position: absolute;
+        top: 30%;
+        right: 0;
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Team Member */
+.cropium-team-member {
+    margin-bottom: 20px;
+    text-align: center;
+    .team-member-image {
+        position: relative;
+        overflow: hidden;
+        &:hover {
+            .hover-state {
+                right: 0;
+                opacity: 1;
+            }
+        }
+        .hover-state {
+            position: absolute;
+            top: 0;
+            right: -25%;
+            width: 25%;
+            height: 80%;
+            margin-top: 10%;
+            background-color: $blue-four;
+            transition: $transition;
+            opacity: 0;
+            ul {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                li {
+                    display: block;
+                    margin: 5px 0;
+                    a {
+                        color: #fff;
+                        transition: $transition;
+                        font-size: 20px;
+                        &:hover {
+                            color: var(--secondary-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .team-member-content {
+        padding: 20px 0;
+        span {
+            text-transform: capitalize;
+        }
+    }
+}

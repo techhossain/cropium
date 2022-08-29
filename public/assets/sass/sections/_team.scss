@@ -1,0 +1,88 @@
+/* Team Area */
+.team-area-home-2 {
+    background-color: $secondary-color-home-2;
+    position: relative;
+    &:before {
+        background-image: url('../images/feature-bg-home-2.png');
+    }
+
+    .single-team-member {
+        padding: 50px 20px;
+        background-color: $primary-color-home-2;
+        text-align: center;
+        position: relative;
+        transition: $transition;
+        z-index: 0;
+        margin-bottom: 30px;
+        .single-feature-2 {
+            width: auto;
+            height: auto;
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            transition: $transition;
+            bottom: 0;
+            right: 0;
+        }
+        .team-icons {
+            position: absolute;
+            top: 65px;
+            right: 45px;
+            transition: $transition;
+            opacity: 0;
+            transform: scale(.5);
+            @include tablet {
+                right: 80px;
+            }
+            @include landscape-phone {
+                right: 170px;
+            }
+            ul {
+                li {
+                    margin: 10px 0;
+                    i {
+                        color: $white-color;
+                        width: 24px;
+                        height: 24px;
+                        line-height: 24px;
+                        text-align: center;
+                        border-radius: 50%;
+                    }
+                    .fa-facebook {
+                        background-color: $facebook;
+                    }
+                    .fa-twitter {
+                        background-color: $twitter;
+                        margin-left: 20px;
+                    }
+                    .fa-dribbble {
+                        background-color: $dribbble;
+                    }
+                }
+            }
+        }
+        &.active {
+            background: $secondary-color;
+            .single-feature-2 {
+                opacity: 1;
+            }
+            .single-feature-2 {
+                bottom: -40px;
+                right: -40px;
+            }
+            .team-icons {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        span {
+            text-transform: capitalize;
+        }
+    }
+}

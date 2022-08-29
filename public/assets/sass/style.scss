@@ -1,0 +1,83 @@
+/*-------------------------------------------------------------
+Template Name: Cropium Portfolio Template
+Template URI: http://cropium.softtechthemes.com/
+Author: SoftTech IT
+Author URI: https://themeforest.net/user/softtech-it/portfolio
+Version: 1.0
+-------------------------------------------------------------*/ 
+
+/*------------------------------------------------------------- 
+TABLE OF CONTENTS: 
+---------------------------------------------------------------
+>> Normalize 
+>> Author CSS
+>> Navbar
+>> Header
+>> Footer Area
+>> Hero Area
+>> About Section
+>> Feature
+>> Experience
+>> Skills
+>> Portfolio
+>> Client
+>> Award
+>> Social Link
+>> Call To Action
+>> Breadcrumb
+>> Team Area
+>> Blog Area
+>> Preloader
+>> Button 
+>> Form
+>> Portfolio Page
+>> Portfolio Details Page
+>> Contact Page
+>> Blog Page
+>> Blog Details Page
+>> About Page
+>> Service Page 
+>> Service Details Page
+>> 404 Page
+--------------------------------------------------------------*/
+
+// Global Design
+@import "global/_mixins";
+@import "global/_variables";
+@import "global/_global";
+@import "global/_theme";
+@import "global/_responsive";
+
+// Sections
+@import "sections/_navbar";
+@import "sections/_header";
+@import "sections/_footer";
+@import "sections/hero";
+@import "sections/_about";
+@import "sections/_feature";
+@import "sections/experience-skills";
+@import "sections/portfolio";
+@import "sections/client";
+@import "sections/counterup";
+@import "sections/award";
+@import "sections/social-link";
+@import "sections/call-to-action";
+@import "sections/breadcrumb";
+@import "sections/team";
+@import "sections/blog";
+
+// Elements
+@import "elements/_preloader";
+@import "elements/_button";
+@import "elements/_form";
+
+// Pages
+@import 'pages/portfolio-page';
+@import 'pages/portfolio-details-page';
+@import 'pages/contact-page';
+@import 'pages/blog-page';
+@import 'pages/blog-details-page';
+@import 'pages/about-page';
+@import 'pages/service-page';
+@import 'pages/service-details-page';
+@import 'pages/404-page';

@@ -1,0 +1,187 @@
+/* Client */
+.client-area {
+    background-color: $primary-color;
+    background-image: url('../images/client-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 115px 0 160px;
+    .section-title {
+        text-align: center;
+        h2.title {
+            color: $white-color;
+        }
+    }
+    .client-slider {
+        position: relative;
+        .slick-dots {
+            position: absolute;
+            left: 50%;
+            bottom: -40px;
+            transform: translateX(-50%);
+        }
+        .slick-dots li {
+            display: inline;
+            margin: 0 7px;
+        }
+        .slick-dots button {
+            background-color: $white-color;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            transition: $transition;
+            cursor: pointer;
+            font-size: 0;
+            border: 1px solid transparent;
+        }
+        .slick-dots .slick-active button {
+            width: 15px;
+            height: 15px;
+            background-color: $secondary-color;
+        }
+        .slick-slide {
+            margin: 0 15px;
+        }
+        .client-single-slide {
+            background-color: $white-color;
+            padding: 40px 20px;
+            display: flex;
+            .client-image {
+                width: 20%;
+                @include desktop {
+                    width: 25%;
+                }
+                @include portrait-phone {
+                    width: 30%;
+                }
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 10px 0 10px 0;
+                }
+            }
+            .client-content {
+                width: 80%;
+                @include desktop {
+                    width: 75%;
+                }
+                @include portrait-phone {
+                    width: 70%;
+                }
+                p {
+                    font-style: italic;
+                    font-size: 18px;
+                }
+            }
+            .client-content-bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .client-author {
+                    span {
+                        color: $purple-color;
+                        font-size: 18px;
+                        font-weight: 700;
+                        text-transform: capitalize;
+                    }
+                }
+                .client-rating {
+                    li {
+                        display: inline;
+                        color: $yellow-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Client Area Home 02
+.client-area-home-2 {
+    background-color: $primary-color-home-2;
+    position: relative;
+    z-index: 2;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-color: $secondary-color-home-2;
+        z-index: -1;
+    }
+    .client-slider-home-2 {
+        background-color: $primary-color-home-2;
+        padding: 80px 100px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 10px 20px #0c0321;
+        @include tablet {
+            padding: 60px 40px;
+        }
+        @include landscape-phone {
+            padding: 60px 40px;
+        }
+        @include portrait-phone {
+            padding: 40px;
+        }
+        &::before {
+            background-image: url('../images/client-bg-home-2.png');
+            background-size: 100% 100%;
+            z-index: -1;
+        }
+
+        .client-single-slide {
+            .client-image {
+                width: 20%;
+                @include tablet {
+                    width: 30%;
+                }
+                @include landscape-phone {
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+                @include portrait-phone {
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+                img {
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                }
+            }
+            .client-content {
+                width: 80%;
+                @include tablet {
+                    width: 70%;
+                }
+                @include landscape-phone {
+                    width: 100%;
+                }
+                @include portrait-phone {
+                    width: 100%;
+                }
+                p {
+                    font-size: 24px;
+                    font-style: italic;
+                }
+                .client-author,
+                .client-company {
+                    margin-right: 20px;
+                }
+                .client-rating {
+                    li {
+                        display: inline;
+                        margin: 0 1px;
+                        cursor: pointer;
+                        i {
+                            color: $yellow-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

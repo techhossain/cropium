@@ -1,0 +1,325 @@
+/* Experience */
+.experience-skills-area {
+    .section-title {
+        text-align: center;
+    }
+    .experience-single-item {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px;
+        box-shadow: 0 20px 50px rgba(black, .07);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        transition: all .2s ease-in;
+        &:hover {
+            margin-top: -5px;
+        }
+        .experience-number {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 42px;
+            font-weight: 700;
+            color: $purple-two;
+            line-height: 1.15;
+        }
+        .experience-single-icon {
+            margin-right: 20px;
+            i {
+                font-size: 30px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 10px;
+                text-align: center;
+            }
+        }
+    }
+    .experience-single-item.experience-item-1 {
+        .experience-single-icon{
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $purple-color;
+            }
+        }
+    }
+    .experience-single-item.experience-item-2 {
+        .experience-single-icon{
+            i {
+                color: $yellow-color;
+                background-color: $yellow-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $yellow-color;
+            }
+        }
+    }
+    .experience-single-item.experience-item-3 {
+        .experience-single-icon{
+            i {
+                color: $secondary-color;
+                background-color: $red-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $secondary-color;
+            }
+        }
+    }
+    .experience-single-item.experience-item-4 {
+        .experience-single-icon{
+            i {
+                color: $paste-color;
+                background-color: $paste-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $paste-color;
+            }
+        }
+    }
+    .experience-single-item.experience-item-5 {
+        .experience-single-icon{
+            i {
+                color: $green-color;
+                background-color: $green-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $green-color;
+            }
+        }
+    }
+    .experience-single-item.experience-item-6 {
+        .experience-single-icon{
+            i {
+                color: $blue-four;
+                background-color: $purple-two;
+            }
+        }
+        .experience-single-content {
+            span {
+                color: $purple-color;
+            }
+        }
+    }
+
+    .single-progressbar {
+        margin-bottom: 30px;
+    }
+}
+
+/* Skills */
+.circle-progress {
+    position: relative;
+    margin-bottom: 20px;
+    canvas {
+        width: 120px;
+        height: 120px;
+    }
+}
+.circle-progress {
+    .progressbar-percentage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 0;
+    }
+    .web-percentage {
+        color: $blue-four;
+    }
+    .wordpress-percentage {
+        color: $yellow-color;
+    }
+    .after-percentage {
+        color: $secondary-color;
+    }
+    .app-percentage {
+        color: $paste-color;
+    }
+}
+
+// Expericence & Education
+.expericence-education-area {
+    background-color: $primary-color-home-2;
+    .experience-single-slide {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px;
+        position: relative;
+        overflow: hidden;
+        background-color: $secondary-color-home-2;
+        transition: $transition;
+        &:hover {
+            background-color: $secondary-color;
+        }
+        .experience-number {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 42px;
+            font-weight: 700;
+            color: $white-color;
+            line-height: 1.15;
+            opacity: .1;
+        }
+        .experience-single-icon {
+            margin-right: 20px;
+            i {
+                font-size: 30px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            &.blue-icon {
+                i {
+                    color: $blue-four;
+                    background-color: $white-color;
+                }
+            }
+            &.yellow-icon {
+                i {
+                    color: $yellow-color;
+                    background-color: $yellow-two;
+                }
+            }
+            &.red-icon {
+                i {
+                    color: $secondary-color;
+                    background-color: $red-two;
+                }
+            }
+            &.paste-icon {
+                i {
+                    color: $paste-color;
+                    background-color: $paste-two;
+                }
+            }
+        }
+        .experience-single-content {
+            span {
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    .experience-slider-home-2 {
+        .prev-arrow,
+        .next-arrow {
+            position: absolute;
+            top: -60px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            background-color: transparent;
+            border: 1px solid $blue-four;
+            color: $white-color;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            transition: $transition;
+            z-index: 1;
+            &:hover {
+                color: $white-color;
+                background-color: $secondary-color;
+                border: 1px solid transparent;
+            }
+        }
+        .prev-arrow {
+            right: 60px;
+        }
+        .next-arrow {
+            right: 0px;
+        }
+        .slick-slide {
+            margin: 0 10px;
+        }
+    }
+
+    .education-slider {
+        text-align: center;
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $white-color;
+            opacity: .1;
+        }
+        .education-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin: -7px auto 20px;
+        }
+        .education-single-slide {
+            &.education-yellow-slide {
+                .education-dot {
+                    background-color: $yellow-color;
+                }
+                .education-year {
+                    color: $yellow-color;
+                }
+            }
+            &.education-blue-slide {
+                .education-dot {
+                    background-color: $blue-four;
+                }
+                .education-year {
+                    color: $blue-four;
+                }
+            }
+            &.education-red-slide {
+                .education-dot {
+                    background-color: $secondary-color;
+                }
+                .education-year {
+                    color: $secondary-color;
+                }
+            }
+            &.education-green-slide {
+                .education-dot {
+                    background-color: $green-color-home-2;
+                }
+                .education-year {
+                    color: $green-color-home-2;
+                }
+            }
+            &.education-paste-slide {
+                .education-dot {
+                    background-color: $paste-color;
+                }
+                .education-year {
+                    color: $paste-color;
+                }
+            }
+        }
+
+        .slick-slide {
+            margin: 0 10px;
+            padding-top: 10px;
+        }
+    }
+}
+
