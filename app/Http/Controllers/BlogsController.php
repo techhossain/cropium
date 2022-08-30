@@ -38,6 +38,7 @@ class BlogsController extends Controller
             'posts' => Blog::where('title', 'LIKE', '%' . $search_text . '%')
                 ->orWhere('excerpt', 'LIKE', '%' . $search_text . '%')
                 ->orWhere('content', 'LIKE', '%' . $search_text . '%')
+                ->orderBy('id', 'desc')
                 ->paginate(5),
             'title' => 'Blog Page'
         ]);

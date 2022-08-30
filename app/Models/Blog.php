@@ -10,7 +10,7 @@ use App\Models\Category;
 class Blog extends Model
 {
 
-    protected $fillable = ['title', 'feature_image', 'excerpt', 'content',  'category_id' ];
+    protected $fillable = ['title', 'feature_image', 'excerpt', 'content',  'category_id', 'slug', 'user_id', 'views'];
 
     use HasFactory;
 

@@ -67,7 +67,15 @@ Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')
 
 Route::get('/dashboard/posts', [PostController::class, 'index'])->name('dashboard-posts')->middleware('auth');
 
+
+Route::get('/dashboard/posts/create', [PostController::class, 'create'])->name('dashboard.post.create')->middleware('auth');
+Route::post('/dashboard/posts/store', [PostController::class, 'store'])->name('dashboard.post.store')->middleware('auth');
+
+
+
+
 Route::get('/dashboard/post/edit/{post:id}', [PostController::class, 'edit'])->name('dashboard.post.edit')->middleware('auth');
 
 Route::put('/dashboard/post/update/{post}', [PostController::class, 'update'])->name('dashboard.post.update')->middleware('auth');
 
+Route::delete('/dashboard/post/detele/{post}', [PostController::class, 'destroy'])->name('dashboard.post.delete')->middleware('auth');

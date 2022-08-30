@@ -19,13 +19,16 @@ class PostController extends Controller
         $searchText = request('search');
 
         $posts = Blog::where('title', 'LIKE', '%' . $searchText . '%')
-        ->orWhere('excerpt', 'LIKE', '%' . $searchText . '%')
-        ->orWhere('content', 'LIKE', '%' . $searchText . '%')
-        ->paginate(10);
+            ->orWhere('excerpt', 'LIKE', '%' . $searchText . '%')
+            ->orWhere('content', 'LIKE', '%' . $searchText . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
-        return view('backend.posts', ['posts' => $posts, 'searchKw' => $searchText]);
-
-
+        return view('backend.posts', [
+            'posts' => $posts,
+            'searchKw' => $searchText,
+            'title' => 'All Posts'
+        ]);
     }
 
     /**
@@ -35,7 +38,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('backend.create-post', [
+            'categories' => $categories,
+            'title' => 'Create new post'
+        ]);
     }
 
     /**
@@ -46,7 +53,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'  => 'required',
+            'feature_image'  => 'required',
+            'excerpt'  => 'required',
+            'content'  => 'required'
+        ]);
+
+        $request['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->title))) . '-' . time();
+        $request['user_id'] = auth()->user()->id;
+        $request['views'] = 0;
+
+        Blog::create($request->all());
+
+
+        return redirect()->route('dashboard-posts')->with('message', 'Post Created successfully!!');
     }
 
     /**
@@ -70,7 +91,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         return view('backend.edit', [
-            'post' => $post, 
+            'post' => $post,
             'categories' => $categories,
             'currentCat' => $post->category
 
@@ -97,8 +118,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $post)
     {
-        //
+        $post->delete();
+        return back()->with('message', 'Post Deleted Successfullt!!');
     }
 }
