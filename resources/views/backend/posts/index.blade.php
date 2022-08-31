@@ -21,7 +21,7 @@
                 <h4 class="card-title">All Posts</h4>
                 </div>
                 <div class="col">
-                  <form class="ml-auto search-form d-none d-md-block" action="{{route('dashboard-posts')}}" method="GET">
+                  <form class="ml-auto search-form d-none d-md-block" action="{{route('posts.index')}}" method="GET">
                     <div class="form-group">
                       <input value="{{$searchKw}}" type="search" name="search" class="form-control" placeholder="Search Post">
                     </div>
@@ -52,7 +52,7 @@
                   <tr>
                     <td>{{$post->id}}</td>
                     <td class="py-1">
-                      <img class="thumb-image" src="{{$post->feature_image}}" alt="{{$post->title}}">
+                      <img class="thumb-image" src="/storage/images/{{$post->feature_image}}" alt="image">
                     </td>
                     <td> {{$post->title}} </td>
                     <td>
@@ -63,11 +63,11 @@
                     <td> {{date('d, F', strtotime($post->updated_at))}}</td>
                     
                     <td>
-                      <a href="{{route('dashboard.post.edit', $post->id)}}">
+                      <a href="{{route('posts.edit', $post->id)}}">
                         <i class="fa fa-lg fa-edit"></i>
                       </a>
 
-                      <form class="d-inline" method="POST" action="{{route('dashboard.post.delete', $post->id)}}">
+                      <form class="d-inline" method="POST" action="{{route('posts.destroy', $post->id)}}">
                         @csrf
                         @method('delete')
 

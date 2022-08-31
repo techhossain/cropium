@@ -15,7 +15,7 @@
                     @endif
 
                 <h4 class="card-title">Edit Post</h4>
-                <form class="forms-sample" method="POST" action="{{route('dashboard.post.update', $post->id)}}">
+                <form class="forms-sample" method="POST" action="{{route('posts.update', $post->id)}}" enctype="multipart/form-data">
                   @csrf
                   @method('put')
 
@@ -46,12 +46,13 @@
 
                   <div class="form-group">
                     <label>Upload Feature Image</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                      <input type="text" class="form-control file-upload-info" placeholder="Upload Image" name="feature_image" value="{{$post->feature_image}}">
-                      <span class="input-group-append">
-                        <button class="file-upload-browse btn btn-info" type="button">Upload</button>
-                      </span>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-1">
+                        <img width="100" height="100" src="/storage/images/{{$post->feature_image}}">
+                      </div>
+                      <div class="col">
+                        <input type="file" name="feature_image">
+                      </div>
                     </div>
                   </div>
 

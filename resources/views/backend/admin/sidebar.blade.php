@@ -3,7 +3,7 @@
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
           <div class="profile-image">
-            <img class="img-xs rounded-circle" src="{{ auth()->user()->photo }}" alt="profile image">
+            <img class="img-xs rounded-circle" src="/storage/images/users/{{ auth()->user()->photo }}" alt="profile image">
             <div class="dot-indicator bg-success"></div>
           </div>
           <div class="text-wrapper">
@@ -29,13 +29,13 @@
         <div class="collapse" id="posts">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="{{route('dashboard-posts')}}">All Posts</a>
+              <a class="nav-link" href="{{route('posts.index')}}">All Posts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('dashboard.post.create')}}">Add New</a>
+              <a class="nav-link" href="{{route('posts.create')}}">Add New</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Categories</a>
+              <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Tags</a>

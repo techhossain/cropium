@@ -17,56 +17,36 @@ class AuthController extends Controller
 
     public function processRegistration(Request $req)
     {
-        // $user = new User();
+        $user = new User();
 
         $info = $req->validate([
             'name'      => 'required|max:50',
             'username'  => 'required|unique:users,username',
-            'photo'     => 'required',
+            'photo'     => 'required|image|mimes:jpg,png,jpeg',
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|min:6',
         ]);
 
-        // $user = User::create($info);
+
+        $user->name     = $req->name;
+        $user->username = $req->username;
+        // Photo upload
+        $photoName = $req->file('photo')->hashName();
+        $req->file('photo')->storeAs('public/images/users', $photoName);
+        $user->photo    = $photoName;
+
+        $user->email    = $req->email;
+        $user->password = bcrypt($req->password);
 
 
-        // $user = $this->createUser($info);
 
-        if ($user = User::create($info)) {
-            // Auth::attempt($info);
+        if ($user->save()) {
+
             Auth::login($user);
             return redirect('/dashboard')->with('message', 'Registration Successful!!');
         }
-
-
-
-        // $user = User::create([
-        //     'name'      => $req->name,
-        //     'username'  => $req->username,
-        //     'photo'     => $req->photo,
-        //     'email'     => $req->email,
-        //     'password'  => bcrypt($req->password),
-        // ]);
-
-        // $user->name     = $req->name;
-        // $user->username = $req->username;
-        // $user->photo    = $req->photo;
-        // $user->email    = $req->email;
-        // $user->password = bcrypt($req->password);
-
-        // $user->save();
     }
 
-    // public function createUser($user)
-    // {
-    //     return User::create([
-    //         'name'      => $user['name'],
-    //         'username'  => $user['username'],
-    //         'photo'     => $user['photo'],
-    //         'email'     => $user['email'],
-    //         'password'  => bcrypt($user['password']),
-    //     ]);
-    // }
 
     public function login()
     {

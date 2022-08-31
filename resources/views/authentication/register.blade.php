@@ -44,7 +44,7 @@
 
                 <h2 class="text-center">Create an account</h2>
                 <hr>
-              <form method="post" action="{{route('processRegistration')}}">
+              <form method="post" action="{{route('processRegistration')}}" enctype="multipart/form-data">
 
                     @csrf
 
@@ -69,8 +69,8 @@
                     </div>
                       
                     <div class="mb-3">
-                        <label for="photo" class="form-label">Photo URL</label>
-                        <input value="{{old('photo')}}" type="text" class="form-control" id="photo" name="photo">
+                        <label for="photo" class="form-label">Upload Photo</label>
+                        <input value="{{old('photo')}}" type="file" class="form-control" id="photo" name="photo">
                         <small class="text-danger">
                             @error('photo')
                                 {{$message}}
