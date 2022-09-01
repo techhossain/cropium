@@ -132,10 +132,10 @@
         </li>
         <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
           <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-            <img class="img-xs rounded-circle" src="/storage/images/users/{{auth()->user()->photo}}" alt="Profile image"> </a>
+            <img class="img-xs rounded-circle" src="{{ route('home') }}/storage/images/{{auth()->user()->photo}}" alt="Profile image"> </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
             <div class="dropdown-header text-center">
-              <img class="img-md rounded-circle" src="/storage/images/users/{{auth()->user()->photo}}" alt="Profile image">
+              <img class="img-md rounded-circle" src="{{ route('home') }}/storage/images/{{auth()->user()->photo}}" alt="Profile image">
               <p class="mb-1 mt-3 font-weight-semibold">{{auth()->user()->name}}</p>
               <p class="font-weight-light text-muted mb-0">{{auth()->user()->email}}</p>
             </div>

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name(),
                 'email' => $faker->safeEmail(),

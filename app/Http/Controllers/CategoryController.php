@@ -17,8 +17,8 @@ class CategoryController extends Controller
         $searchText = request('search');
         $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
             ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
-            ->orderBy('id', 'asc')
-            ->paginate(10);
+            ->orderBy('id', 'desc')
+            ->paginate(5);
 
         return view('backend.categories.index', compact('searchText', 'categories'));
     }
@@ -41,7 +41,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'  => 'required'
+        ]);
+
+        $category = new Category;
+
+        $category->name = $request->name;
+        $category->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
+
+        $category->save();
+
+        return redirect()->route('categories.index')->with('message', 'Category Created successfully!!');
     }
 
     /**
@@ -63,7 +74,18 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $searchText = request('search');
+
+        $current = Category::firstWhere('id', $id);
+
+
+
+        $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
+            ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+        return view('backend.categories.edit', compact('searchText', 'categories', 'current'));
     }
 
     /**
@@ -75,7 +97,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::firstWhere('id', $id);
+        
+        $category->name = $request->name;
+        $category->slug  = $request->slug;
+        $category->save();
+
+        return redirect()->route('categories.index')->with('message', 'Category updated successfully!!');
+
     }
 
     /**
@@ -86,6 +115,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::firstWhere('id', $id);
+        $category->delete();
+
+        $category->posts()->update(['category_id' => request('updateCategory')]);
+
+
+
+        return redirect()->route('categories.index')->with('message', 'Category deleted!!');
     }
 }

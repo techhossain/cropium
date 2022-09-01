@@ -52,7 +52,7 @@
                   <tr>
                     <td>{{$post->id}}</td>
                     <td class="py-1">
-                      <img class="thumb-image" src="/storage/images/{{$post->feature_image}}" alt="image">
+                      <img class="thumb-image" src="{{ route('home') }}/storage/images/{{$post->feature_image}}" alt="image">
                     </td>
                     <td> {{$post->title}} </td>
                     <td>

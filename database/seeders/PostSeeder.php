@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 8; $i++) {
 
             $posts = [
                 'title' => $faker->realText(rand(40, 60)),

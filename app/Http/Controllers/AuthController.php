@@ -32,7 +32,7 @@ class AuthController extends Controller
         $user->username = $req->username;
         // Photo upload
         $photoName = $req->file('photo')->hashName();
-        $req->file('photo')->storeAs('public/images/users', $photoName);
+        $req->file('photo')->storeAs('public/images', $photoName);
         $user->photo    = $photoName;
 
         $user->email    = $req->email;

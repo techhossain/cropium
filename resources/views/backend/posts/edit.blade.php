@@ -7,7 +7,6 @@
           <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-
                     @if(session('message')) 
                       <div class="alert alert-success" role="alert">
                         {{session('message')}}
@@ -22,11 +21,21 @@
                   <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" value="{{$post->title}}" class="form-control" id="title" placeholder="Post Title">
+                      <small class="text-danger">
+                        @error('title')
+                            {{$message}}
+                        @enderror
+                      </small>
                   </div>
 
                   <div class="form-group">
                     <label for="excerpt">Excerpt</label>
                     <textarea name="excerpt"class="form-control" id="excerpt" rows="3" placeholder="Excerpt">{{$post->excerpt}}</textarea>
+                      <small class="text-danger">
+                        @error('excerpt')
+                            {{$message}}
+                        @enderror
+                      </small>
                   </div>
 
                   <div class="form-group">
@@ -54,11 +63,21 @@
                         <input type="file" name="feature_image">
                       </div>
                     </div>
+                    <small class="text-danger">
+                        @error('feature_image')
+                            {{$message}}
+                        @enderror
+                      </small>
                   </div>
 
                   <div class="form-group">
                     <label for="content">Content</label>
                     <textarea name="content"class="form-control" id="content" rows="5">{{$post->content}}</textarea>
+                    <small class="text-danger">
+                        @error('content')
+                            {{$message}}
+                        @enderror
+                      </small>
                   </div>
 
                   <button type="submit" class="btn btn-success mr-2">Update</button>

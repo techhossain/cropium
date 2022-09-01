@@ -27,7 +27,7 @@
                 <div class="col-lg-8">
                     <article class="cropium-blog-item">
                         <div class="blog-image">
-                            <img src="{{$post->feature_image}}" alt="{{$post->title}}">
+                            <img src="{{route('home')}}/storage/images/{{$post->feature_image}}" alt="{{$post->title}}">
                             <div class="blog-date">
                                 <h5 class="title">{{date('d', strtotime($post->created_at))}}</h5>
                                 <span> {{date('F', strtotime($post->created_at))}} </span>

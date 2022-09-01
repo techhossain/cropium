@@ -33,18 +33,24 @@
                 <div class="col-md-6">
                   <div class="card">
                     <div class="card-body">
-                      <h4>Add Category</h4>
+                      <h4>Edit Category</h4>
                       <hr>
 
-<form class="forms-sample" method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data">
-  @csrf
+                <form class="forms-sample" method="POST" action="{{route('categories.update', $current->id)}}" enctype="multipart/form-data">
+                  @csrf
+                  @method('put')
 
-  <div class="form-group">
-    <label for="name">Category Name</label>
-    <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name">
-  </div>
-  <button type="submit" class="btn btn-success mr-2">Update Category</button>
-</form>
+                  <div class="form-group">
+                    <label for="name">Category Name</label>
+                    <input type="text" name="name" value="{{$current->name}}" class="form-control" id="name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="slug">Category Slug</label>
+                    <input type="text" name="slug" value="{{$current->slug}}" class="form-control" id="slug">
+                  </div>
+                  <button type="submit" class="btn btn-success mr-2">Update Category</button>
+                </form>
 
 
                     </div>
@@ -77,12 +83,12 @@
                                 <i class="fa fa-lg fa-edit"></i>
                             </a>
 
-<form class="d-inline" method="POST" action="{{route('categories.destroy', $category->id)}}">
+                            <form class="d-inline" method="POST" action="{{route('categories.destroy', $category->id)}}">
+                                @csrf
+                                @method('delete')
 
-@csrf
-@method('delete')
 
-<button type="button" class="btn" data-toggle="modal" data-target="#deleteCategory-{{$category->id}}"><i class="fa fa-trash fa-lg text-danger"></i></button>
+                                <button type="button" class="btn" data-toggle="modal" data-target="#deleteCategory-{{$category->id}}"><i class="fa fa-trash fa-lg text-danger"></i></button>
 
 <!-- Modal -->
 <div class="modal fade" id="deleteCategory-{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,14 +104,8 @@
         <p>
       Do you really want to delete <code>{{$category->name}}</code> category??
       </p>
-      <div class="form-group">
-      <p>Assign a new category</p>
-      <select name="updateCategory" id="assignCategory" class="form-control">
-        @foreach(App\Models\Category::where('id', '!=', $category->id)->get() as $single)
-        <option value="{{$single->id}}">{{$single->name}}</option>
-        @endforeach
-      </select>
-</div>
+
+      
 
 
 
@@ -116,8 +116,7 @@
       </div>
     </div>
   </div>
-</div>
-</form>
+</div>                            </form>
                             
 
                             </td>
@@ -131,20 +130,22 @@
   
                     </div>
                   </div>
-
-                  <!-- Blog Pagination Starts -->
-              <div class="mt-3">
-                <div class="row order-md-1">
-                    <div class="col-lg-12">
-                
-                        {{ $categories->links("vendor.pagination.bootstrap-4") }}
-                
+                                <!-- Blog Pagination Starts -->
+                  <div class="mt-3">
+                    <div class="row order-md-1">
+                        <div class="col-lg-12">
+                    
+                            {{ $categories->links("vendor.pagination.bootstrap-4") }}
+                    
+                        </div>
                     </div>
+                  </div>
                 </div>
+
               </div>
 
-                </div>
-              </div>
+
+
             </div>
           </div>
         </div>

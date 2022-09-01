@@ -98,10 +98,34 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $post)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'title'  => 'required',
+            'feature_image'  => 'required|image|mimes:jpg,png,jpeg',
+            'excerpt'  => 'required',
+            'content'  => 'required'
+        ]);
+        
+        $post = Blog::firstWhere('id', $id);
+        
+        $post->title = $request->title;
+        $post->excerpt = $request->excerpt;
+        $post->content = $request->content;
+        $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->title))) . '-' . time();
 
-        $post->update($request->all());
+        // image upload
+        $imageName = $request->file('feature_image')->hashName();
+        $request->file('feature_image')->storeAs('public/images', $imageName);
+        $post->feature_image = $imageName;
+        $post->user_id = auth()->user()->id;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+
+        
+        // $post = new Blog();
+        // $post->update($request->all());
         return back()->with('message', 'Post updated successfully!!');
     }
 

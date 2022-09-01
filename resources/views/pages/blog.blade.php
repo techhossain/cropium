@@ -47,7 +47,7 @@
                     <article class="cropium-blog-item">
                         <div class="blog-image">
                             <a href="{{route('single-post', $post->slug)}}">
-                                <img src="{{$post->feature_image}}" alt="{{$post->title}}">
+                                <img src="{{route('home')}}/storage/images/{{$post->feature_image}}" alt="{{$post->title}}">
                             </a>
                             <div class="blog-date">
                                 <h5 class="title"> {{date('d', strtotime($post->created_at))}}</h5>
