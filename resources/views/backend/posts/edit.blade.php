@@ -64,10 +64,10 @@
                       </div>
                     </div>
                     <small class="text-danger">
-                        @error('feature_image')
-                            {{$message}}
-                        @enderror
-                      </small>
+                      @error('feature_image')
+                          {{$message}}
+                      @enderror
+                    </small>
                   </div>
 
                   <div class="form-group">

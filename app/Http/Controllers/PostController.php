@@ -56,7 +56,7 @@ class PostController extends Controller
         $post = new Blog;
 
         $post->title = $request->title;
-        $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->title))) . '-' . time();
+        $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower(trim($request->title)))) . '-' . time();
         $post->excerpt = $request->excerpt;
         $post->content = $request->content;
 
@@ -112,7 +112,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->excerpt = $request->excerpt;
         $post->content = $request->content;
-        $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->title))) . '-' . time();
+        $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower(trim($request->title)))) . '-' . time();
 
         // image upload
         $imageName = $request->file('feature_image')->hashName();

@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->photo    = $photoName;
 
         $user->email    = $req->email;
-        $user->password = bcrypt($req->password);
+        $user->password = $req->password;
 
 
 
@@ -55,19 +55,20 @@ class AuthController extends Controller
         ]);
     }
 
-    public function processLogin(Request $req)
+    public function processLogin(Request $request)
     {
-        $info = $req->validate([
-            'email' => 'required|email|exists:users,email',
-            'password'  => 'required|min:6'
+        $credentials = $request->validate([
+            'email'         => 'required',
+            'password'      => 'required',
         ]);
 
-        if (Auth::attempt($info)) {
-            $req->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
             return redirect('dashboard');
-        } else {
-            return redirect('login')->with('invalidPassword', 'Wrong Password');
-        }
+        } 
+        
+        return redirect('login')->with('invalidPassword', 'Wrong Password');
+        
 
         // Auth::attempt([
         //     'email'  => $req->email,

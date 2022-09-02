@@ -44,27 +44,24 @@
         </div>
       </li>
 
-
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
           <i class="menu-icon typcn typcn-coffee"></i>
-          <span class="menu-title">Basic UI Elements</span>
+          <span class="menu-title">Users</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="users">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+              <a class="nav-link" href="{{route('users.index')}}">All Users</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+              <a class="nav-link" href="{{route('users.create')}}">Add New</a>
             </li>
           </ul>
         </div>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="pages/forms/basic_elements.html">
           <i class="menu-icon typcn typcn-shopping-bag"></i>
