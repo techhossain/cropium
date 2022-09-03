@@ -61,6 +61,7 @@
                       </div>
                       <div class="col">
                         <input type="file" name="feature_image">
+                        <input type="hidden" name="update_feature_image" value="{{$post->feature_image}}">
                       </div>
                     </div>
                     <small class="text-danger">

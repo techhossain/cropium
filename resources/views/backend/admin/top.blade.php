@@ -139,7 +139,7 @@
               <p class="mb-1 mt-3 font-weight-semibold">{{auth()->user()->name}}</p>
               <p class="font-weight-light text-muted mb-0">{{auth()->user()->email}}</p>
             </div>
-            <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
+            <a class="dropdown-item" href="{{route('user.profile')}}">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
             <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
             <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
             <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>

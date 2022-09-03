@@ -106,24 +106,29 @@ class PostController extends Controller
             'excerpt'  => 'required',
             'content'  => 'required'
         ]);
-        
+
         $post = Blog::firstWhere('id', $id);
-        
+
         $post->title = $request->title;
         $post->excerpt = $request->excerpt;
         $post->content = $request->content;
         $post->slug  = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower(trim($request->title)))) . '-' . time();
 
         // image upload
-        $imageName = $request->file('feature_image')->hashName();
-        $request->file('feature_image')->storeAs('public/images', $imageName);
-        $post->feature_image = $imageName;
+        if ($request->feature_image != null) {
+            $imageName = $request->file('feature_image')->hashName();
+            $request->file('feature_image')->storeAs('public/images', $imageName);
+            $post->feature_image = $imageName;
+        } else {
+            $post->feature_image = $request->update_feature_image;
+        }
+
         $post->user_id = auth()->user()->id;
         $post->category_id = $request->category_id;
 
         $post->save();
 
-        
+
         // $post = new Blog();
         // $post->update($request->all());
         return back()->with('message', 'Post updated successfully!!');

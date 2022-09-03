@@ -56,7 +56,13 @@
                     </td>
                     <td> {{$post->title}} </td>
                     <td>
-                    {{$post->category->name}}
+                        @if($post->category)
+                            {{$post->category->name}}
+                        @else
+                            {{" "}}
+                        @endif
+                    
+                    
                     </td>
                     <td> {{$post->user->name}}</td>
                     <td>{{$post->views}}</td>

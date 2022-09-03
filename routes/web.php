@@ -81,4 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'categories'    => CategoryController::class,
         'users'         => UserController::class
     ]);
+
+    Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
 });

@@ -36,8 +36,23 @@
                         <div class="blog-content">
                             <div class="blog-meta">
                                 <ul>
-                                    <li><a href="/user/{{ $post->user->username }}"><i class="fa fa-user-o"></i>{{ $post->user->name }}</a></li>
-                                    <li><a href="/category/{{$post->category->slug}}"><i class="fa fa-bookmark-o"></i>{{$category->name}}</a></li>
+                                    @if($post->user)
+                                    <li>
+                                        <a href="/user/{{ $post->user->username }}">
+                                            <i class="fa fa-user-o"></i>
+                                            {{ $post->user->name }}
+                                            </a>
+                                    </li>
+                                    @endif
+                                    
+                                    @if($post->category)
+                                    <li>
+                                        <a href="/category/{{$post->category->slug}}">
+                                            <i class="fa fa-bookmark-o"></i>{{$category->name}}
+                                        </a>
+                                    </li>
+                                    @endif
+                                    
                                     <li><i class="fa fa-calendar"></i>{{date('d, F', strtotime($post->created_at))}}</li>
                                     <li><i class="fa fa-clock-o"></i>{{$post->views}} views</li>
                                 </ul>
@@ -204,10 +219,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 
 @endsection

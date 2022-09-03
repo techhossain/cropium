@@ -109,21 +109,20 @@ class UserController extends Controller
             'email'     => 'required|email|unique:users,email',
             'password'  => 'required|min:6'
         ]);
-        
+
         $user = User::firstWhere('id', $id);
-        
+
         $user->name         = $request->name;
         $user->username     = $request->username;
         $user->email        = $request->email;
         $user->password     = $request->password;
 
         // image upload
-        if($request->photo != null){
+        if ($request->photo != null) {
             $imageName = $request->file('photo')->hashName();
             $request->file('photo')->storeAs('public/images', $imageName);
             $user->photo = $imageName;
-        }
-        else{
+        } else {
             $user->photo = $request->photoUpdate;
         }
 
@@ -143,9 +142,17 @@ class UserController extends Controller
 
         $user = User::firstWhere('id', $id);
 
-        $user->posts()->update(['user_id' => 1 ]);
-        
+        $user->posts()->update(['user_id' => 1]);
+
         $user->delete();
         return back()->with('message', 'User Deleted!!');
+    }
+
+
+    public function my_profile()
+    {
+        $user = auth()->user();
+
+        return view('backend.users.profile', compact('user'));
     }
 }

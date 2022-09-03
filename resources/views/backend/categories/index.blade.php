@@ -43,7 +43,7 @@
     <label for="name">Category Name</label>
     <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name">
   </div>
-  <button type="submit" class="btn btn-success mr-2">Update Category</button>
+  <button type="submit" class="btn btn-success mr-2">Add Category</button>
 </form>
 
 
