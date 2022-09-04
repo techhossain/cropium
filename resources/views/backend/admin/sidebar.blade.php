@@ -34,16 +34,19 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('posts.create')}}">Add New</a>
             </li>
+            @if(auth()->user()->is_admin)
             <li class="nav-item">
               <a class="nav-link" href="{{route('categories.index')}}">Categories</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Tags</a>
             </li>
+            @endif
           </ul>
         </div>
       </li>
 
+      @if(auth()->user()->is_admin)
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
           <i class="menu-icon typcn typcn-coffee"></i>
@@ -80,6 +83,7 @@
           <span class="menu-title">Tables</span>
         </a>
       </li>
+      @endif
 
     </ul>
   </nav>

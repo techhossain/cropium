@@ -69,6 +69,13 @@
                                     <li class="no-children">
                                         <a href="{{url('/contact')}}">contact</a>
                                     </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">customer</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{route('customer.register')}}">Register</a></li>
+                                            <li><a href="{{route('customer.login')}}">Login</a></li>
+                                        </ul>
+                                    </li>
 
                                     @guest
                                     <li class="no-children">

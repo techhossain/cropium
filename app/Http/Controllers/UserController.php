@@ -60,6 +60,7 @@ class UserController extends Controller
         $user->username     = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower(trim($request->name))));
         $user->email        = $request->email;
         $user->password     = $request->password;
+        $user->is_admin     = 0;
 
         // image upload
         $imageName = $request->file('photo')->hashName();
@@ -106,8 +107,6 @@ class UserController extends Controller
         // dd($request->photo);
         $request->validate([
             'name'  => 'required',
-            'email'     => 'required|email|unique:users,email',
-            'password'  => 'required|min:6'
         ]);
 
         $user = User::firstWhere('id', $id);

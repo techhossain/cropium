@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -78,9 +79,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resources([
         'posts'         => PostController::class,
-        'categories'    => CategoryController::class,
-        'users'         => UserController::class
     ]);
 
+    // Route::middleware('')->resources([
+    //     'categories'    => CategoryController::class,
+    //     'users'         => UserController::class
+    // ]);
+
+    Route::group(['middleware' => 'is_admin'], function () {
+        Route::resources([
+            'categories'    => CategoryController::class,
+            'users'         => UserController::class
+        ]);
+    });
+
     Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
+});
+
+
+// Customers
+
+Route::group(['prefix'  => 'customer', 'as' => 'customer.'], function () {
+
+    // Registration
+    Route::get('register', [CustomerController::class, 'register'])->name('register');
+    Route::post('register', [CustomerController::class, 'processRegistration'])->name('processRegistration');
+
+    // Login
+    Route::get('login', [CustomerController::class, 'login'])->name('login');
+    Route::post('login', [CustomerController::class, 'processLogin'])->name('processLogin');
+
+    // Logout
+    Route::post('logout', [CustomerController::class, 'logout'])->name('logout');
+    Route::get('logout', [CustomerController::class, 'logout'])->name('logout');
+
+    // Dashboard
+    Route::get('dashboard', [CustomerController::class, 'dashboard'])->name('dashboard')->middleware('is_customer');
 });
