@@ -37,7 +37,6 @@ class AuthController extends Controller
 
         $user->email    = $req->email;
         $user->password = $req->password;
-		$user->is_admin = 0;
 
 
 
