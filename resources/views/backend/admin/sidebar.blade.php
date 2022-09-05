@@ -46,7 +46,7 @@
         </div>
       </li>
 
-      @if(auth()->user()->is_admin)
+
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
           <i class="menu-icon typcn typcn-coffee"></i>
@@ -58,13 +58,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('users.index')}}">All Users</a>
             </li>
+            @if(auth()->user()->is_admin)
             <li class="nav-item">
               <a class="nav-link" href="{{route('users.create')}}">Add New</a>
             </li>
+            @endif
           </ul>
         </div>
       </li>
-
+      @if(auth()->user()->is_admin)
       <li class="nav-item">
         <a class="nav-link" href="pages/forms/basic_elements.html">
           <i class="menu-icon typcn typcn-shopping-bag"></i>

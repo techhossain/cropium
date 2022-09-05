@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resources([
         'posts'         => PostController::class,
+        'users'         => UserController::class
     ]);
 
     // Route::middleware('')->resources([
@@ -89,7 +90,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::resources([
             'categories'    => CategoryController::class,
-            'users'         => UserController::class
         ]);
     });
 

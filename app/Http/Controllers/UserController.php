@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -138,13 +139,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user = new User();
 
-        $user = User::firstWhere('id', $id);
+        // if( Gate::forUser($user)->allows('delete-user', $user) ){
+            Gate::authorize('delete-user', $user);
+            $user = User::firstWhere('id', $id);
+            $user->posts()->update(['user_id' => 1]);
+            $user->delete();
 
-        $user->posts()->update(['user_id' => 1]);
+            return back()->with('message', 'User Deleted!!');
+        // }
 
-        $user->delete();
-        return back()->with('message', 'User Deleted!!');
     }
 
 

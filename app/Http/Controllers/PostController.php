@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -87,12 +89,21 @@ class PostController extends Controller
      */
     public function edit(Blog $post)
     {
-        $categories = Category::all();
-        return view('backend.posts.edit', [
-            'post' => $post,
-            'categories' => $categories,
-            'currentCat' => $post->category
-        ]);
+        // if(!Gate::allows('modify-post', $post)){
+        //     abort(403);
+        // }
+        Gate::authorize('modify-post', $post);
+            
+            
+
+            $categories = Category::all();
+            return view('backend.posts.edit', [
+                'post' => $post,
+                'categories' => $categories,
+                'currentCat' => $post->category
+            ]);
+        
+        
     }
 
     /**
