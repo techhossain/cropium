@@ -68,22 +68,28 @@
                     <td>{{$post->views}}</td>
                     <td> {{date('d, F', strtotime($post->updated_at))}}</td>
                     
+                    
+
                     <td>
-                      <a href="{{route('posts.edit', $post->id)}}">
-                        <i class="fa fa-lg fa-edit"></i>
-                      </a>
+                      @can('modify-post', $post)
+                        <a href="{{route('posts.edit', $post->id)}}">
+                          <i class="fa fa-lg fa-edit"></i>
+                        </a>
+                      @endcan
 
-                      <form class="d-inline" method="POST" action="{{route('posts.destroy', $post->id)}}">
-                        @csrf
-                        @method('delete')
+                      @can('delete-post', $post)
+                        <form class="d-inline" method="POST" action="{{route('posts.destroy', $post->id)}}">
+                          @csrf
+                          @method('delete')
 
-                        <button class="btn d-inline" type="submit">
-                          <i class="fa fa-trash fa-lg text-danger"></i>
-                        </button>
-                      </form>
-                      
-
+                          <button class="btn d-inline" type="submit">
+                            <i class="fa fa-trash fa-lg text-danger"></i>
+                          </button>
+                        </form>
+                      @endcan
                     </td>
+
+
                   </tr>
                 @endforeach
 

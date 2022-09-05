@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class PostController extends Controller
 {
@@ -36,6 +39,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()->can('Create Post')) {
+            abort(403);
+        }
         $categories = Category::all();
         return view('backend.posts.create-post', [
             'categories' => $categories,
@@ -92,18 +98,20 @@ class PostController extends Controller
         // if(!Gate::allows('modify-post', $post)){
         //     abort(403);
         // }
-        Gate::authorize('modify-post', $post);
-            
-            
+        // Gate::authorize('modify-post', $post);
 
-            $categories = Category::all();
-            return view('backend.posts.edit', [
-                'post' => $post,
-                'categories' => $categories,
-                'currentCat' => $post->category
-            ]);
-        
-        
+        if (!auth()->user()->can('Edit Posts')) {
+            abort(403);
+        }
+
+
+
+        $categories = Category::all();
+        return view('backend.posts.edit', [
+            'post' => $post,
+            'categories' => $categories,
+            'currentCat' => $post->category
+        ]);
     }
 
     /**
@@ -150,6 +158,8 @@ class PostController extends Controller
      */
     public function destroy(Blog $post)
     {
+        Gate::authorize('deletePost', $post);
+
         $post->delete();
         return back()->with('message', 'Post Deleted Successfullt!!');
     }

@@ -19,4 +19,9 @@ class UserPolicy
     {
         return $user->is_admin ? Response::allow() : Response::deny('Only Administrator can delete an user');
     }
+
+    // public function deleteSelf(User $user)
+    // {
+    //     return $user->is_admin ? Response::allow() : Response::deny('you can not delete yourself');
+    // }
 }

@@ -7,8 +7,10 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 Route::get('/home-2', function () {
     return view('pages.home-2');
@@ -115,4 +117,30 @@ Route::group(['prefix'  => 'customer', 'as' => 'customer.'], function () {
 
     // Dashboard
     Route::get('dashboard', [CustomerController::class, 'dashboard'])->name('dashboard')->middleware('is_customer');
+});
+
+
+Route::get('permission', function () {
+
+    // Roles
+    // $admin = Role::create(['name' => 'Editor']);
+
+
+
+    // Permissions
+    // $editPost   = Permission::create(['name' => 'Edit Posts']);
+    // $deletePost = Permission::create(['name' => 'Delete Posts']);
+
+
+    // Asssign
+    // $editPost->assignRole($admin);
+
+
+    // Assign Role to specific user
+
+    $user = User::find(5);
+    $user->givePermissionTo('Create Post');
+    // $user->givePermissionTo('Edit Posts', 'Delete Post', 'Create Post');
+    // $user->revokePermissionTo('Delete Post');
+    // $user->assignRole('Editor');
 });

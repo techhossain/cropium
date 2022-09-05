@@ -33,6 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         // });
 
         Gate::define('modify-post', [PostPolicy::class, 'modifyPost']);
+        Gate::define('delete-post', [PostPolicy::class, 'deletePost']);
 
         Gate::define('delete-user', [UserPolicy::class, 'deleteUser']);
 
