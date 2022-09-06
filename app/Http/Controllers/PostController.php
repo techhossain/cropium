@@ -19,19 +19,23 @@ class PostController extends Controller
      */
     public function index()
     {
-        $searchText = request('search');
+        if (auth()->user()->cannot('posts')) {
+            abort(403);
+        } else {
 
-        $posts = Blog::where('title', 'LIKE', '%' . $searchText . '%')
-            ->orWhere('excerpt', 'LIKE', '%' . $searchText . '%')
-            ->orWhere('content', 'LIKE', '%' . $searchText . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+            $searchText = request('search');
+            $posts = Blog::where('title', 'LIKE', '%' . $searchText . '%')
+                ->orWhere('excerpt', 'LIKE', '%' . $searchText . '%')
+                ->orWhere('content', 'LIKE', '%' . $searchText . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
 
-        return view('backend.posts.index', [
-            'posts' => $posts,
-            'searchKw' => $searchText,
-            'title' => 'All Posts'
-        ]);
+            return view('backend.posts.index', [
+                'posts' => $posts,
+                'searchKw' => $searchText,
+                'title' => 'All Posts'
+            ]);
+        }
     }
 
     /**
@@ -39,14 +43,19 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (!auth()->user()->can('Create Post')) {
+        // if (!auth()->user()->can('Create Post')) {
+        //     abort(403);
+        // }
+        if (auth()->user()->cannot('posts')) {
             abort(403);
+        } else {
+
+            $categories = Category::all();
+            return view('backend.posts.create-post', [
+                'categories' => $categories,
+                'title' => 'Create new post'
+            ]);
         }
-        $categories = Category::all();
-        return view('backend.posts.create-post', [
-            'categories' => $categories,
-            'title' => 'Create new post'
-        ]);
     }
 
     /**
@@ -100,18 +109,20 @@ class PostController extends Controller
         // }
         // Gate::authorize('modify-post', $post);
 
-        if (!auth()->user()->can('Edit Posts')) {
+        // if (!auth()->user()->can('Edit Posts')) {
+        //     abort(403);
+        // }
+
+        if (auth()->user()->cannot('posts')) {
             abort(403);
+        } else {
+            $categories = Category::all();
+            return view('backend.posts.edit', [
+                'post' => $post,
+                'categories' => $categories,
+                'currentCat' => $post->category
+            ]);
         }
-
-
-
-        $categories = Category::all();
-        return view('backend.posts.edit', [
-            'post' => $post,
-            'categories' => $categories,
-            'currentCat' => $post->category
-        ]);
     }
 
     /**
@@ -121,7 +132,6 @@ class PostController extends Controller
     {
         $request->validate([
             'title'  => 'required',
-            'feature_image'  => 'required|image|mimes:jpg,png,jpeg',
             'excerpt'  => 'required',
             'content'  => 'required'
         ]);
@@ -158,9 +168,14 @@ class PostController extends Controller
      */
     public function destroy(Blog $post)
     {
-        Gate::authorize('deletePost', $post);
+        // Gate::authorize('deletePost', $post);
 
-        $post->delete();
-        return back()->with('message', 'Post Deleted Successfullt!!');
+        if (auth()->user()->cannot('posts')) {
+            abort(403);
+        } else {
+
+            $post->delete();
+            return back()->with('message', 'Post Deleted Successfullt!!');
+        }
     }
 }

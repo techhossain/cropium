@@ -19,6 +19,8 @@ class AuthController extends Controller
     {
         $user = new User();
 
+        // dd(User::doesntHave('roles')->get());
+
         $info = $req->validate([
             'name'      => 'required|max:50',
             'username'  => 'required|unique:users,username',
@@ -37,8 +39,10 @@ class AuthController extends Controller
 
         $user->email    = $req->email;
         $user->password = $req->password;
-		$user->is_admin = 0;
 
+
+        // Assign role to the user
+        $user->assignRole('subscriber');
 
 
         if ($user->save()) {
@@ -66,10 +70,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('dashboard');
-        } 
-        
+        }
+
         return redirect('login')->with('invalidPassword', 'Wrong Password');
-        
+
 
         // Auth::attempt([
         //     'email'  => $req->email,

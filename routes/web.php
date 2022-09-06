@@ -81,7 +81,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resources([
         'posts'         => PostController::class,
-        'users'         => UserController::class
+        'users'         => UserController::class,
+        'categories'    => CategoryController::class,
     ]);
 
     // Route::middleware('')->resources([
@@ -89,11 +90,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //     'users'         => UserController::class
     // ]);
 
-    Route::group(['middleware' => 'is_admin'], function () {
-        Route::resources([
-            'categories'    => CategoryController::class,
-        ]);
-    });
+    // Route::group(['middleware' => 'is_admin'], function () {
+    //     Route::resources([
+    //         'categories'    => CategoryController::class,
+    //     ]);
+    // });
 
     Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
 });
@@ -123,24 +124,44 @@ Route::group(['prefix'  => 'customer', 'as' => 'customer.'], function () {
 Route::get('permission', function () {
 
     // Roles
-    // $admin = Role::create(['name' => 'Editor']);
-
-
+    $admin = Role::create(['name' => 'administrator']);
+    $editor = Role::create(['name' => 'editor ']);
+    $author = Role::create(['name' => 'author']);
+    $subscriber = Role::create(['name' => 'subscriber']);
 
     // Permissions
-    // $editPost   = Permission::create(['name' => 'Edit Posts']);
-    // $deletePost = Permission::create(['name' => 'Delete Posts']);
+    $posts          = Permission::create(['name' => 'posts.*']);
+    $users          = Permission::create(['name' => 'usere.*']);
+    $categories     = Permission::create(['name' => 'categories.*']);
 
 
-    // Asssign
-    // $editPost->assignRole($admin);
+    // Assign permission to role
+    // admin
+    $admin->givePermissionTo('posts.*');
+    $admin->givePermissionTo('usere.*');
+    $admin->givePermissionTo('categories.*');
+
+    // Editor
+    $editor->givePermissionTo('posts.*');
+    $editor->givePermissionTo('categories.*');
+
+    // Author
+    $author->givePermissionTo('posts.*');
 
 
-    // Assign Role to specific user
 
-    $user = User::find(5);
-    $user->givePermissionTo('Create Post');
-    // $user->givePermissionTo('Edit Posts', 'Delete Post', 'Create Post');
-    // $user->revokePermissionTo('Delete Post');
-    // $user->assignRole('Editor');
+
+    // $role = Role::findById(3);
+    // $role->givePermissionTo(Permission::all());
+
+    // $role = Role::findById(2);
+    // $role->givePermissionTo('posts.*');
+    // $role->givePermissionTo('categories.*');
+
+
+    // $admin = Role::findById(1);
+    // $user = User::find(1);
+    // $user->assignRole($admin);
+
+    // dd(Permission::all());
 });

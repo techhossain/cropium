@@ -38,6 +38,7 @@
                     <th> Name</th>
                     <th> Username </th>
                     <th> Email </th>
+                    <th> Role </th>
                     <th> <> </th>
                   </tr>
                 </thead>
@@ -55,6 +56,7 @@
                     <td> {{$user->name}} </td>
                     <td> {{$user->username}}</td>
                     <td> {{$user->email}}</td>
+                    <td> {{ ucfirst( $user->getRoleNames()[0] ) }}</td>
                     <td>
                       <a href="{{route('users.edit', $user->id)}}">
                         <i class="fa fa-lg fa-edit"></i>

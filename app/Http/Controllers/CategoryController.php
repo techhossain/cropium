@@ -9,24 +9,25 @@ class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $searchText = request('search');
-        $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
-            ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(5);
+        if (auth()->user()->cannot('posts') || auth()->user()->cannot('categories')) {
+            abort(403);
+        } else {
 
-        return view('backend.categories.index', compact('searchText', 'categories'));
+            $searchText = request('search');
+            $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
+                ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+
+            return view('backend.categories.index', compact('searchText', 'categories'));
+        }
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -35,9 +36,6 @@ class CategoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -74,18 +72,20 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $searchText = request('search');
+        if (auth()->user()->cannot('posts') || auth()->user()->cannot('categories')) {
+            abort(403);
+        } else {
 
-        $current = Category::firstWhere('id', $id);
+            $searchText = request('search');
 
+            $current = Category::firstWhere('id', $id);
+            $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
+                ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(5);
 
-
-        $categories = Category::where('name', 'LIKE', '%' . $searchText . '%')
-            ->orWhere('slug', 'LIKE', '%' . $searchText . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(5);
-
-        return view('backend.categories.edit', compact('searchText', 'categories', 'current'));
+            return view('backend.categories.edit', compact('searchText', 'categories', 'current'));
+        }
     }
 
     /**
@@ -98,13 +98,12 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::firstWhere('id', $id);
-        
+
         $category->name = $request->name;
         $category->slug  = $request->slug;
         $category->save();
 
         return redirect()->route('categories.index')->with('message', 'Category updated successfully!!');
-
     }
 
     /**
@@ -115,13 +114,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::firstWhere('id', $id);
-        $category->delete();
+        if (auth()->user()->cannot('posts') || auth()->user()->cannot('categories')) {
+            abort(403);
+        } else {
 
-        $category->posts()->update(['category_id' => request('updateCategory')]);
-
-
-
-        return redirect()->route('categories.index')->with('message', 'Category deleted!!');
+            $category = Category::firstWhere('id', $id);
+            $category->delete();
+            $category->posts()->update(['category_id' => request('updateCategory')]);
+            return redirect()->route('categories.index')->with('message', 'Category deleted!!');
+        }
     }
 }

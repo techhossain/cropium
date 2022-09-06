@@ -71,13 +71,13 @@
                     
 
                     <td>
-                      @can('modify-post', $post)
+
                         <a href="{{route('posts.edit', $post->id)}}">
                           <i class="fa fa-lg fa-edit"></i>
                         </a>
-                      @endcan
 
-                      @can('delete-post', $post)
+
+
                         <form class="d-inline" method="POST" action="{{route('posts.destroy', $post->id)}}">
                           @csrf
                           @method('delete')
@@ -86,7 +86,7 @@
                             <i class="fa fa-trash fa-lg text-danger"></i>
                           </button>
                         </form>
-                      @endcan
+
                     </td>
 
 

@@ -69,6 +69,26 @@
                       </div>
                     </div>
 
+                    <div class="py-3">
+                      <label for="role">Role</label>
+                      <br>
+                      
+                      @foreach ($roles::all()->pluck('name') as $role)
+                        <div class="form-check form-check-inline" style="display: inline-flex !important;">
+                          <input class="form-check-input" type="radio" name="role" id="{{$role}}" value="{{$role}}">
+                          <label class="form-check-label" for="{{$role}}"> {{$role}} </label>
+                        </div>
+                      @endforeach
+
+                      <div>
+                          @error('role')
+                              <small class="text-danger">{{$message}}</small>
+                          @enderror
+                      </div>
+                    </div>
+
+
+
 
                     <button type="submit" class="btn btn-success mr-2">Create User</button>
                   </form>
