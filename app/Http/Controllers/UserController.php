@@ -169,4 +169,41 @@ class UserController extends Controller
         $user = auth()->user();
         return view('backend.users.profile', compact('user'));
     }
+
+
+    public function profile_update(Request $request, $id)
+    {
+
+        $request->validate([
+            'name'  => 'required',
+            'username'  => 'required',
+            'email'  => 'required',
+            'password'  => 'required',
+        ]);
+
+        $user = User::firstWhere('id', $id);
+
+        $user->name         = $request->name;
+        $user->username     = $request->username;
+        $user->email        = $request->email;
+        $user->password     = $request->password;
+
+        // image upload
+        if ($request->photo != null) {
+            $imageName = $request->file('photo')->hashName();
+            $request->file('photo')->storeAs('public/images', $imageName);
+            $user->photo = $imageName;
+        } else {
+            $user->photo = $request->photoUpdate;
+        }
+
+        // Assign role to the user
+        if (isset($request->role)) {
+            $user->syncRoles($request->role);
+        }
+
+        $user->save();
+
+        return redirect()->route('user.profile')->with('message', 'User updated successfully!!');
+    }
 }

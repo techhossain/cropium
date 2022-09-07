@@ -16,7 +16,7 @@
 
                   <h4 class="card-title">Update Profile</h4>
 
-                  <form class="forms-sample" method="POST" action="{{route('users.update', $user->id)}}" enctype="multipart/form-data">
+                  <form class="forms-sample" method="POST" action="{{ route('user.profile.update', $user->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
 
@@ -79,7 +79,7 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="btn btn-success mr-2">Update User</button>
+                  <button type="submit" class="btn btn-success mr-2">Update Profile</button>
                   </form>
                 </div>
               </div>

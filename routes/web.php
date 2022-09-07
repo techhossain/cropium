@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
@@ -97,6 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // });
 
     Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
+    Route::put('user/profile-update/{id}', [UserController::class, 'profile_update'])->name('user.profile.update');
 });
 
 
@@ -165,3 +167,9 @@ Route::get('permission', function () {
 
     // dd(Permission::all());
 });
+
+
+// Email Sending
+
+Route::get('payment', [PaymentController::class, 'index']);
+Route::post('payment', [PaymentController::class, 'send_payment'])->name('payment.send');
