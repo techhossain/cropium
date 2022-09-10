@@ -87,5 +87,12 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('notification')}}">
+          <i class="dropdown-item-icon ti-dashboard"></i>
+          <span class="menu-title">Notifications</span>
+        </a>
+      </li>
+
     </ul>
   </nav>

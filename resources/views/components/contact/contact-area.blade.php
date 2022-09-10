@@ -38,17 +38,24 @@
                     </div>
                 </div>
                 <div class="col-xl-5 offset-xl-1 col-lg-6">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('message') }}
+                      </div>
+                    @endif
+
                     <span class="top-span">write to us</span>
                     <!-- Contact Form Starts -->
                     <div class="contact-form">
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="email" placeholder="Email">
-                            <select id="#" name="contact-form">
-                                <option value="volvo">Subject</option>
-                                <option value="saab">Option Two</option>
-                                <option value="opel">Option Three</option>
-                                <option value="audi">Option Four</option>
+                        <form action="{{route('contact')}}" method="post">
+                            @csrf
+                            <input type="text" name="name" placeholder="Name">
+                            <input type="email" name="email" placeholder="Email">
+                            <select id="#" name="subject">
+                                <option value="not selected">Select Subject</option>
+                                <option value="Web">Web Development</option>
+                                <option value="SEO">Search Engine Optimization</option>
+                                <option value="SMM">Social Media Management</option>
                             </select>
                             <textarea name="message" placeholder="Your Message"></textarea>
                             <button type="submit" class="template-btn">submit now</button>

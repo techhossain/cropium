@@ -5,7 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Models\User;
@@ -37,9 +39,9 @@ Route::get("/portfolio/{id}", function () {
     return view("pages.portfolio-details");
 });
 
-Route::get("/contact", function () {
-    return view("pages.contact");
-});
+// Route::get("/contact", function () {
+//     return view("pages.contact");
+// });
 
 Route::get("/404", function () {
     return view("404");
@@ -173,3 +175,13 @@ Route::get('permission', function () {
 
 Route::get('payment', [PaymentController::class, 'index']);
 Route::post('payment', [PaymentController::class, 'send_payment'])->name('payment.send');
+
+
+// contact page mail & notification
+
+Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
+
+
+// Show All notification for a specific uses
+Route::get('users/notifications', [NotificationController::class, 'index'])->name('notification')->middleware('auth');
