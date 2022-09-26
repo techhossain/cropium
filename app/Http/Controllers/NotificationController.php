@@ -12,6 +12,6 @@ class NotificationController extends Controller
         $user = auth()->user();
         $notifications = $user->notifications;
 
-        return view('notifications.index', compact('notifications'));
+        return view('backend.notifications.index', compact('notifications'));
     }
 }
