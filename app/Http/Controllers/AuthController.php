@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class AuthController extends Controller
 {
@@ -50,11 +52,13 @@ class AuthController extends Controller
 
         if ($user->save()) {
 
-            $last = $user::latest()->first();
+            event(new Registered($user));
+
+            // $last = $user::latest()->first();
 
             // $last->notify(new RegisterNotification($last->name, $last->email));
 
-            Notification::send($last,  new RegisterNotification($last->name, $last->email));
+            // Notification::send($last,  new RegisterNotification($last->name, $last->email));
 
             Auth::login($user);
             return redirect('/dashboard')->with('message', 'Registration Successful!!');
@@ -108,5 +112,29 @@ class AuthController extends Controller
         return view('backend.dashboard', [
             'title' => 'Dashboard'
         ]);
+    }
+
+
+
+    // Email Vertification
+    public function verification_notice()
+    {
+        $title = "Verification Notice";
+        return view('authentication.email-verify', compact('title'));
+    }
+
+    // Email email_verify
+    public function email_verify(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+        return redirect('/dashboard')->with('message', 'Registration Successful!!');
+    }
+
+    // Resend Email verification link
+    public function resend_link(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Verification link sent!');
+        // return redirect('/dashboard')->with('message', 'Registration Successful!!');
     }
 }

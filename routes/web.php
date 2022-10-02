@@ -75,9 +75,9 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middlew
 
 
 // Dashboard
-Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware(['auth', 'verified']);
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function () {
 
     // Route::resource('posts', PostController::class);
     // Route::resource('categories', CategoryController::class);
@@ -185,3 +185,10 @@ Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
 
 // Show All notification for a specific uses
 Route::get('users/notifications', [NotificationController::class, 'index'])->name('notification')->middleware('auth');
+
+
+// Email Verification
+Route::get('/email/notice', [AuthController::class, 'verification_notice'])->name('verification.notice')->middleware('auth');
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'email_verify'])->name('verification.verify')->middleware(['auth', 'signed']);
+
+Route::post('email/resend-verification-link', [AuthController::class, 'resend_link'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
